@@ -86,7 +86,10 @@ primitives).
   `(nil, error)` naming the missing/ambiguous slots, so the user's callback
   can stage more windows and retry. The compositor's own validation is the
   zero-mutation backstop, not the UX. There is no pending state to commit
-  out of.
+  out of. Because staging is userland, the user also defines the **fallback
+  for unmapped slots**: launch a default program (e.g. a terminal running a
+  launcher) or raise an existing window to occupy the slot, then retry —
+  the compositor has no built-in fallback policy.
 - **D-03 (unchanged):** template-owned plain data only — no view pointers or
   listeners in durable state. (With sessions gone, this is now trivially true:
   apply consumes the template and produces an ordinary workspace tree.)
@@ -139,14 +142,18 @@ PCRE2 compiled at validation, json-c refcounts freed on failure.
    - **Dissolve:** the template object remains a cached file; no template
      state stays attached to the tree. A view that closes later is an
      ordinary view-close.
-3. **Userland placeholder pattern (supported example, ships in G5/G6):** a Lua
-   script stages slots by opening e.g. terminal windows running a launcher;
-   applies the template binding those terminals to slots; on selection the
-   script closes the placeholder terminal, launches the chosen app, and swaps
-   it into the slot with existing move primitives (`add_callback("view_map")`,
-   `view_get_app_id/class/title`, `exec_process`, container move via
-   `command`). Matching policy, retries, and sequencing stay userland —
-   matching #384's intent and the i3-resurrect role split.
+3. **Userland placeholder + fallback patterns (supported examples, ship in
+   G5/G6):** a Lua script stages slots by opening e.g. terminal windows
+   running a launcher; applies the template binding those terminals to
+   slots; on selection the script closes the placeholder terminal, launches
+   the chosen app, and swaps it into the slot with existing move primitives
+   (`add_callback("view_map")`, `view_get_app_id/class/title`,
+   `exec_process`, container move via `command`). **Per-slot user-defined
+   fallback** completes the contract: when apply reports unmapped slots, the
+   script launches a default program or raises an existing window for each,
+   then re-applies — the fallback permanently occupies the slot until
+   swapped. Matching policy, fallbacks, retries, and sequencing stay
+   userland — matching #384's intent and the i3-resurrect role split.
 4. **Ownership:** templates own strings/lists only; apply reads them and
    produces ordinary tree state. Legacy `sway_space` untouched;
    `space_destroy_all` keeps owning only `root->spaces`.
@@ -196,8 +203,9 @@ apply half after G3; G5 needs G3+G4; G6 needs all.
   apply errors enumerate missing/ambiguous slots so callbacks can retry
   (D-02). Example scripts: (a) simple binder — a `view_map` callback
   accumulates slot→view mappings and calls apply **only once complete**;
-  (b) launcher placeholders — launcher terminals swapped for real apps on
-  selection, demonstrating the H-02 userland pattern end to end.
+  (b) launcher placeholders + fallback — apply reports unmapped slots → the
+  script launches/raises a user-defined default program per slot, re-applies,
+  and swaps fallbacks for real apps on selection (H-02 pattern end to end).
 - **G6 — hardening + docs.** TUTORIAL/man updates (template anatomy, criteria,
   apply contract, restore_hide sweep, userland placeholder pattern); two
   example templates (dev: mail+terminal+editor per #384; writing); discussion
