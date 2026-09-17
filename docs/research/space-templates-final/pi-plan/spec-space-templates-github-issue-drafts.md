@@ -1,7 +1,14 @@
 # GitHub issue drafts — bindable space templates v2.1
 
 **Target repository:** `tayiorbeii/scroll`  
-**Publication status:** draft only; do not publish. The fork does not exist and owner confirmation is required before any GitHub operation.
+**Publication status:** PUBLISHED 2026-09-17 to `tayiorbeii/scroll` (fork created and issues enabled this date):
+
+- Issue 1: https://github.com/tayiorbeii/scroll/issues/1
+- Issue 2: https://github.com/tayiorbeii/scroll/issues/2
+- Issue 3: https://github.com/tayiorbeii/scroll/issues/3
+- Issue 4: https://github.com/tayiorbeii/scroll/issues/4
+- Issue 5: https://github.com/tayiorbeii/scroll/issues/5
+- Issue 6: https://github.com/tayiorbeii/scroll/issues/6
 
 These drafts correspond to `space-templates-execution-graph-v2.1-final.md`. They intentionally encode the final anti-features: no pending sessions, compositor placeholders, timeout/cancel/commit lifecycle, fallback/retry/staging parameters, or built-in fill/matching policy. Userland may fill slots and call the same one-shot apply again after an error.
 
