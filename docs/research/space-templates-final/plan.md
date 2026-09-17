@@ -74,22 +74,23 @@ close unrelated windows); cross-reboot PID/con_id identity; multi-output
 targeting; auto-inferred durable policy (generated `slot-N` names are
 structural only); Wayland session protocols; compositor-side slot identity
 *after* apply (slot replacement post-apply is userland via existing
-primitives).
+primitives); **fallback/retry/staging options in the apply API** — the API is
+single-shot with a structured error, and filling failed slots is userland
+scripting (D-02).
 
 ## 3. Decisions (G0 — resolved 2026-09-17)
 
 - **D-01 (unchanged):** dedicated template IPC; `get_spaces` keeps its legacy
   meaning.
 - **D-02 (refined):** all-or-nothing means **apply fails otherwise** — the
-  user/script ensures each container is mapped before applying, and the
-  **Lua callback is where that failure surfaces**: `apply` returns
-  `(nil, error)` naming the missing/ambiguous slots, so the user's callback
-  can stage more windows and retry. The compositor's own validation is the
+  user/script ensures each container is mapped before applying. The failure
+  surfaces to script as `apply` → `(nil, error)` naming the missing/ambiguous
+  slots. **That error object is the only hook:** the fill-then-retry loop is
+  plain userland scripting (apply → fill the named slots → apply again) and
+  needs **no callback, no fallback option, and no retry/staging parameter**
+  in the compositor or the Lua binding. The compositor's validation is the
   zero-mutation backstop, not the UX. There is no pending state to commit
-  out of. Because staging is userland, the user also defines the **fallback
-  for unmapped slots**: launch a default program (e.g. a terminal running a
-  launcher) or raise an existing window to occupy the slot, then retry —
-  the compositor has no built-in fallback policy.
+  out of, and no built-in fallback policy.
 - **D-03 (unchanged):** template-owned plain data only — no view pointers or
   listeners in durable state. (With sessions gone, this is now trivially true:
   apply consumes the template and produces an ordinary workspace tree.)
@@ -197,15 +198,18 @@ apply half after G3; G5 needs G3+G4; G6 needs all.
   `apply <name> [mappings…]`); completions (`bash`, `fish`, `zsh`); man pages
   (`scroll-ipc.7.scd`, `scroll.5.scd`). `apply_space_template` IPC accepts
   `{name, workspace:"current", mappings:[{slot, con_id}|{slot, criteria}]}`
-  and returns success/error — never arbitrary server paths.
+  and returns success/error — never arbitrary server paths. The payload has
+  **no** fallback/retry/staging fields; incompleteness is reported only via
+  the structured error (anti-feature guard, D-02).
 - **G5 — Lua adapter + example.** `space_template_get(name)`,
   `space_template_apply(name, mappings)` with `nil/false, error` convention;
-  apply errors enumerate missing/ambiguous slots so callbacks can retry
-  (D-02). Example scripts: (a) simple binder — a `view_map` callback
-  accumulates slot→view mappings and calls apply **only once complete**;
-  (b) launcher placeholders + fallback — apply reports unmapped slots → the
-  script launches/raises a user-defined default program per slot, re-applies,
-  and swaps fallbacks for real apps on selection (H-02 pattern end to end).
+  apply errors enumerate missing/ambiguous slots — the only incompleteness
+  interface (D-02). Example scripts, both **plain scripts with no required
+  callbacks and no API support beyond the structured error**: (a) fill-then-
+  retry — call apply; on failure, launch/raise a user-defined default program
+  for each named slot and call apply again (Taylor's workaround pattern,
+  canonical); (b) launcher placeholders — pre-stage launcher terminals bound
+  to slots, swap them for real apps on selection (H-02 pattern end to end).
 - **G6 — hardening + docs.** TUTORIAL/man updates (template anatomy, criteria,
   apply contract, restore_hide sweep, userland placeholder pattern); two
   example templates (dev: mail+terminal+editor per #384; writing); discussion
