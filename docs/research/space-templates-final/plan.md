@@ -217,6 +217,14 @@ apply half after G3; G5 needs G3+G4; G6 needs all.
   required default — D-02/D-06, now stricter and simpler than proposed).
   Full repo checks; review-ready local commits; **no PR/merge without
   explicit authorization**.
+- **PR hygiene (upstream-bound work):** planning artifacts live outside the
+  upstream diff by construction — `.pi/`, `.pi-persona/`, `.research-cache/`
+  are locally excluded (`.git/info/exclude`, not the upstream `.gitignore`),
+  and `docs/research/**` stays on the local working branch only. Upstream PR
+  branches are cut fresh from upstream `master` and receive **cherry-picked
+  implementation commits only** (sway/, include/, tests/, completions/,
+  examples/ — the examples ship as feature content per issues #5/#6; the
+  planning record never does).
 
 ## 7. Traceability
 

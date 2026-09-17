@@ -47,6 +47,7 @@ userland scripting). "Verified" = built + check run in this clone.
 - [ ] Two example templates (dev mail+terminal+editor per #384; writing)
 - [ ] Discussion #384 reply (dedicated API — D-01; all-slots-required with userland fallback — D-02/D-06)
 - [ ] Full repo checks (Meson build+tests, `git diff --check`, completions, man generation); review-ready local commits; **no PR/merge without explicit authorization**
+- [ ] PR branches cut fresh from upstream `master`, cherry-picked implementation commits only; `docs/research/**`, `.pi/`, `.pi-persona/` never enter an upstream branch
 
 ## Cross-cutting invariants
 - [ ] Anti-feature: no fallback/retry/staging parameters anywhere in compositor, IPC, or binding (D-02)
