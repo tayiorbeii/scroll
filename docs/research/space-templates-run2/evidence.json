@@ -1,0 +1,660 @@
+{
+  "runId": "run_tiling_manager_save_window_1789617857250",
+  "createdAt": "2026-09-17T04:04:17.250Z",
+  "goal": "Tiling window manager layout save and restore with placeholder windows: i3-resurrect i3 swallow layout files, sway swaymsg append_layout, swayr window matching, niri scrollable-tiling, PaperWM session restore, Qtile saved layouts, awesome-wm tags restore, xdg-session-management Wayland protocol",
+  "featureKey": "tiling-manager-save-window",
+  "status": "inconclusive",
+  "statusReasons": [
+    "no_selected_repositories",
+    "no_evidence_anchors"
+  ],
+  "selectedRepos": [],
+  "scoredCandidates": [
+    {
+      "repo": "Anduin2017/AnduinOS",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_Anduin2017_AnduinOS_1",
+              "provider": "octocode",
+              "repo": "Anduin2017/AnduinOS",
+              "path": "OSS.md",
+              "startLine": 23,
+              "endLine": 23,
+              "matchText": "* [Tiling-assistant](https://github.com/Leleat/Tiling-Assistant)",
+              "matchedSignal": "Tiling",
+              "url": "https://github.com/Anduin2017/AnduinOS/blob/main/OSS.md#L23",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "andykamp/.dotfiles",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_andykamp_.dotfiles_1",
+              "provider": "octocode",
+              "repo": "andykamp/.dotfiles",
+              "path": "DOCS.md",
+              "startLine": 241,
+              "endLine": 241,
+              "matchText": "## tiling manager and mac shortcuts",
+              "matchedSignal": "Tiling",
+              "url": "https://github.com/andykamp/.dotfiles/blob/main/DOCS.md#L241",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "bbidulock/adwm",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_bbidulock_adwm_1",
+              "provider": "octocode",
+              "repo": "bbidulock/adwm",
+              "path": "README",
+              "startLine": 142,
+              "endLine": 142,
+              "matchText": "- full support for Window Maker dock applications in floating and tiling",
+              "matchedSignal": "Tiling",
+              "url": "https://github.com/bbidulock/adwm/blob/main/README#L142",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "bollu/bollu.github.io",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_bollu_bollu.github.io_1",
+              "provider": "octocode",
+              "repo": "bollu/bollu.github.io",
+              "path": "todo.md",
+              "startLine": 17,
+              "endLine": 17,
+              "matchText": "- [Niri: Scrollable Tiling window manager for wayland, eyecandy!](https://github.com/YaLTeR/niri)",
+              "matchedSignal": "Tiling",
+              "url": "https://github.com/bollu/bollu.github.io/blob/main/todo.md#L17",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "BurntSushi/pytyle1",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "cdelorme/system-setup",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_cdelorme_system-setup_1",
+              "provider": "octocode",
+              "repo": "cdelorme/system-setup",
+              "path": "todo.md",
+              "startLine": 30,
+              "endLine": 30,
+              "matchText": "- try out `i3wm`, a tiling window manager (especially with my new monitor!)",
+              "matchedSignal": "Tiling",
+              "url": "https://github.com/cdelorme/system-setup/blob/main/todo.md#L30",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "christiankm/dotfiles",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_christiankm_dotfiles_1",
+              "provider": "octocode",
+              "repo": "christiankm/dotfiles",
+              "path": "TODO.md",
+              "startLine": 55,
+              "endLine": 55,
+              "matchText": "- [ ] yabai window tiling manager (<https://github.com/asmvik/yabai>)",
+              "matchedSignal": "Tiling",
+              "url": "https://github.com/christiankm/dotfiles/blob/main/TODO.md#L55",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "comfies/custard",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "Excedrin/pytyle2",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "FlightGear/simgear",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "GMkonan/dotfiles",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "GNOME/gnome-shell",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "kitnil/notes",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "mate-desktop/marco",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "mate-desktop/mate-control-center",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_Anduin2017_AnduinOS_1",
+      "provider": "octocode",
+      "repo": "Anduin2017/AnduinOS",
+      "path": "OSS.md",
+      "startLine": 23,
+      "endLine": 23,
+      "matchText": "* [Tiling-assistant](https://github.com/Leleat/Tiling-Assistant)",
+      "matchedSignal": "Tiling",
+      "url": "https://github.com/Anduin2017/AnduinOS/blob/main/OSS.md#L23",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_andykamp_.dotfiles_1",
+      "provider": "octocode",
+      "repo": "andykamp/.dotfiles",
+      "path": "DOCS.md",
+      "startLine": 241,
+      "endLine": 241,
+      "matchText": "## tiling manager and mac shortcuts",
+      "matchedSignal": "Tiling",
+      "url": "https://github.com/andykamp/.dotfiles/blob/main/DOCS.md#L241",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_bbidulock_adwm_1",
+      "provider": "octocode",
+      "repo": "bbidulock/adwm",
+      "path": "README",
+      "startLine": 142,
+      "endLine": 142,
+      "matchText": "- full support for Window Maker dock applications in floating and tiling",
+      "matchedSignal": "Tiling",
+      "url": "https://github.com/bbidulock/adwm/blob/main/README#L142",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_bollu_bollu.github.io_1",
+      "provider": "octocode",
+      "repo": "bollu/bollu.github.io",
+      "path": "todo.md",
+      "startLine": 17,
+      "endLine": 17,
+      "matchText": "- [Niri: Scrollable Tiling window manager for wayland, eyecandy!](https://github.com/YaLTeR/niri)",
+      "matchedSignal": "Tiling",
+      "url": "https://github.com/bollu/bollu.github.io/blob/main/todo.md#L17",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_cdelorme_system-setup_1",
+      "provider": "octocode",
+      "repo": "cdelorme/system-setup",
+      "path": "todo.md",
+      "startLine": 30,
+      "endLine": 30,
+      "matchText": "- try out `i3wm`, a tiling window manager (especially with my new monitor!)",
+      "matchedSignal": "Tiling",
+      "url": "https://github.com/cdelorme/system-setup/blob/main/todo.md#L30",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_christiankm_dotfiles_1",
+      "provider": "octocode",
+      "repo": "christiankm/dotfiles",
+      "path": "TODO.md",
+      "startLine": 55,
+      "endLine": 55,
+      "matchText": "- [ ] yabai window tiling manager (<https://github.com/asmvik/yabai>)",
+      "matchedSignal": "Tiling",
+      "url": "https://github.com/christiankm/dotfiles/blob/main/TODO.md#L55",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    }
+  ],
+  "warnings": [
+    "missingProof: comfies/custard was not proof-read (maxReposToProve reached).",
+    "missingProof: Excedrin/pytyle2 was not proof-read (maxReposToProve reached).",
+    "missingProof: FlightGear/simgear was not proof-read (maxReposToProve reached).",
+    "missingProof: GMkonan/dotfiles was not proof-read (maxReposToProve reached).",
+    "missingProof: GNOME/gnome-shell was not proof-read (maxReposToProve reached).",
+    "missingProof: kitnil/notes was not proof-read (maxReposToProve reached).",
+    "missingProof: mate-desktop/marco was not proof-read (maxReposToProve reached).",
+    "missingProof: mate-desktop/mate-control-center was not proof-read (maxReposToProve reached)."
+  ]
+}

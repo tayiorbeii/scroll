@@ -1,0 +1,34 @@
+{
+  "runIds": [
+    "run_tiling_managers_ecosystems_real_world_1789617779706",
+    "run_tiling_manager_save_window_1789617857250",
+    "wm-space-template-restore (hints-based campaign, 6/6 repos explained)"
+  ],
+  "collectedAt": "2026-09-17",
+  "anchors": [
+    { "repo": "i3/i3", "path": "docs/layout-saving", "startLine": 9, "endLine": 120, "role": "canonical placeholder+swallow design doc: append_layout, placeholder windows, criteria anatomy, precedence over assignments", "proofLevel": "proved" },
+    { "repo": "i3/i3", "path": "src/load_layout.c", "startLine": 24, "endLine": 57, "role": "swallows parsing state machine (parsing_swallows, Match alloc)", "proofLevel": "proved" },
+    { "repo": "i3/i3", "path": "src/load_layout.c", "startLine": 219, "endLine": 223, "role": "empty swallow definition rejected as invalid", "proofLevel": "proved" },
+    { "repo": "i3/i3", "path": "src/load_layout.c", "startLine": 303, "endLine": 311, "role": "swallow criteria keys: class/instance regex_new, id, dock", "proofLevel": "proved" },
+    { "repo": "i3/i3", "path": "src/manage.c", "startLine": 279, "endLine": 291, "role": "window-map-time adoption: con_for_window(search_at, cwindow, &match)", "proofLevel": "proved" },
+    { "repo": "i3/i3", "path": "src/ipc.c", "startLine": 0, "endLine": 0, "role": "swallows array serialized in IPC tree replies", "proofLevel": "partial" },
+    { "repo": "i3/i3", "path": "parser-specs/commands.spec", "startLine": 70, "endLine": 83, "role": "append_layout is a first-class IPC command", "proofLevel": "proved" },
+    { "repo": "JonnyHaystack/i3-resurrect", "path": "i3_resurrect/treeutils.py", "startLine": 54, "endLine": 68, "role": "userland criteria derivation: swallows from window_properties, re.escape, per-class config overrides", "proofLevel": "proved" },
+    { "repo": "JonnyHaystack/i3-resurrect", "path": "i3_resurrect/layout.py", "startLine": 83, "endLine": 91, "role": "restore logic keys on container.swallows", "proofLevel": "partial" },
+    { "repo": "Nama/swayrst", "path": "README.md", "startLine": 20, "endLine": 24, "role": "documented pain: no way to identify same windows after reboot; node IDs reset — the gap named slots close", "proofLevel": "proved" },
+    { "repo": "niri-wm/niri", "path": "src/dbus/gnome_shell_introspect.rs", "startLine": 25, "endLine": 31, "role": "no session/layout restore in scrollable-tiling cousin; only D-Bus app-id introspection", "proofLevel": "partial" },
+    { "repo": "paperwm/PaperWM", "path": "tiling.js", "startLine": 74, "endLine": 81, "role": "delegates persistence to GNOME Shell session modes; no WM-native layout persistence", "proofLevel": "partial" },
+    { "repo": "freedesktop/wayland-protocols", "path": "staging/ (tree query 2026-09)", "startLine": 0, "endLine": 0, "role": "no session-management protocol merged; discussion #384 premise holds", "proofLevel": "partial" },
+    { "repo": "dawsers/scroll (local clone)", "path": "include/sway/tree/space.h", "startLine": 13, "endLine": 32, "role": "existing space model already stores children/fractions/layout/geometry/focus — template data model is 80% present; missing slot+hints", "proofLevel": "proved" },
+    { "repo": "dawsers/scroll (local clone)", "path": "sway/tree/space.c", "startLine": 366, "endLine": 406, "role": "space_save/space_load; views held by reference (transient); layout_space_restore entry for binding phase", "proofLevel": "proved" },
+    { "repo": "dawsers/scroll (local clone)", "path": "sway/ipc-json.c", "startLine": 1592, "endLine": 1648, "role": "get_spaces JSON omits geometry (only children + live view metadata) — #384's export complaint verified", "proofLevel": "proved" },
+    { "repo": "dawsers/scroll (local clone)", "path": "swaymsg/main.c", "startLine": 983, "endLine": 997, "role": "IPC message-type dispatch; where get_space_template/load_space_template plug in", "proofLevel": "proved" },
+    { "repo": "dawsers/scroll (local clone)", "path": "include/sway/criteria.h", "startLine": 39, "endLine": 77, "role": "pcre2 matcher (app_id/class/instance/title/shell/tag) reusable for slot hint matching", "proofLevel": "proved" },
+    { "repo": "dawsers/scroll (local clone)", "path": "sway/lua.c", "startLine": 1984, "endLine": 2066, "role": "Lua registry: view_get_*/container_*/workspace_*/add_callback/ipc_send/json round-trip — user-side binder primitives all present", "proofLevel": "proved" },
+    { "repo": "dawsers/scroll (local clone)", "path": "(absence)", "startLine": 0, "endLine": 0, "role": "zero hits for APPEND_LAYOUT/save_layout in scroll: sway never implemented i3 layout save/restore, so the feature is greenfield", "proofLevel": "proved" }
+  ],
+  "kitRunNotes": [
+    "Automated candidate discovery was unreliable for this niche domain: CLI runs selected translation/build files (flatpak po/de.po) and off-topic repos (grandyang/leetcode, kitnil/notes). Kept under ../space-templates{,-run2,-run3}/ as provenance.",
+    "Hints-based explainRepoPattern run collected per-repo question answers + anchors for swaywm/sway, i3/i3, JonnyHaystack/i3-resurrect, Nama/swayrst, niri-wm/niri, paperwm/PaperWM (/tmp/scroll-evidence-batch{1,2}.json); implementationMap extraction was boilerplate in octocode fallback mode, so substance anchors above were re-verified directly via octocode CLI line-anchored reads."
+  ]
+}

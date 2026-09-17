@@ -1,0 +1,621 @@
+{
+  "runId": "run_tiling_managers_ecosystems_real_world_1789617779706",
+  "createdAt": "2026-09-17T04:02:59.706Z",
+  "goal": "Find real-world examples of how tiling window managers and their ecosystems implement saved layouts and partial session restoration with named placeholder windows/slots, to inform implementing 'bindable space templates' in dawsers/scroll (a sway fork with scrollable PaperWM-style tiling and a Lua scripting API; see its GitHub discussion #384). Cover: (1) i3-resurrect / i3 layout save-restore with placeholder swallow criteria; (2) sway ecosystem window-matching tools (swayr, sworkstyle, etc.); (3) niri and hyprscroller/Hyprland scrollable-tiling persistence; (4) PaperWM/GNOME, KDE, Qtile, awesome session-restore approaches; (5) the xdg-session-management Wayland protocol draft. Extract concrete patterns: template/schema formats, window-matching criteria, placeholder-to-window binding flows, IPC/API design, and how to add a versioned template export/import API plus a Lua slot-binding API to a sway-based compositor.",
+  "featureKey": "tiling-managers-ecosystems-real-world",
+  "status": "inconclusive",
+  "statusReasons": [
+    "no_selected_repositories",
+    "no_evidence_anchors"
+  ],
+  "selectedRepos": [],
+  "scoredCandidates": [
+    {
+      "repo": "Alex-Bini/kwin-direktor",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_Alex-Bini_kwin-direktor_1",
+              "provider": "octocode",
+              "repo": "Alex-Bini/kwin-direktor",
+              "path": "README.md",
+              "startLine": 11,
+              "endLine": 11,
+              "matchText": "**An ultra-modern, zero-bloat, Wayland-First Tiling Window Manager for KDE Plasma 6.**",
+              "matchedSignal": "tiling",
+              "url": "https://github.com/Alex-Bini/kwin-direktor/blob/main/README.md#L11",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "antoniosarosi/dotfiles",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_antoniosarosi_dotfiles_1",
+              "provider": "octocode",
+              "repo": "antoniosarosi/dotfiles",
+              "path": "README.md",
+              "startLine": 68,
+              "endLine": 68,
+              "matchText": "\"tiling window manager\" videos on Youtube, because that's where the rabbit hole",
+              "matchedSignal": "tiling",
+              "url": "https://github.com/antoniosarosi/dotfiles/blob/main/README.md#L68",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "BuriedStPatrick/linux-notes",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_BuriedStPatrick_linux-notes_1",
+              "provider": "octocode",
+              "repo": "BuriedStPatrick/linux-notes",
+              "path": "rider.md",
+              "startLine": 5,
+              "endLine": 5,
+              "matchText": "### Window Tiling managers like bspwm, dwm, etc.",
+              "matchedSignal": "tiling",
+              "url": "https://github.com/BuriedStPatrick/linux-notes/blob/main/rider.md#L5",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "cdleon/awesome-terminals",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_cdleon_awesome-terminals_1",
+              "provider": "octocode",
+              "repo": "cdleon/awesome-terminals",
+              "path": "README.md",
+              "startLine": 28,
+              "endLine": 28,
+              "matchText": "- [Darktile](https://github.com/liamg/darktile) - **[DEPRECATED]** A GPU rendered terminal emulator designed for tiling window managers.",
+              "matchedSignal": "tiling",
+              "url": "https://github.com/cdleon/awesome-terminals/blob/main/README.md#L28",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "davidshepherd7/frames-only-mode",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_davidshepherd7_frames-only-mode_1",
+              "provider": "octocode",
+              "repo": "davidshepherd7/frames-only-mode",
+              "path": "README.md",
+              "startLine": 9,
+              "endLine": 9,
+              "matchText": "[tiling window managers](https://en.wikipedia.org/wiki/Tiling_window_manager)",
+              "matchedSignal": "tiling",
+              "url": "https://github.com/davidshepherd7/frames-only-mode/blob/main/README.md#L9",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "enajork/dotfiles-guide",
+      "score": 0,
+      "class": "docs",
+      "positiveSignals": [
+        {
+          "key": "env_deployment_docs",
+          "label": "Environment/deployment documentation present.",
+          "weight": 10,
+          "source": "file",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "id": "ev_enajork_dotfiles-guide_1",
+              "provider": "octocode",
+              "repo": "enajork/dotfiles-guide",
+              "path": "TILING.md",
+              "startLine": 1,
+              "endLine": 1,
+              "matchText": "# Tiling window managers vs stacking window managers",
+              "matchedSignal": "tiling",
+              "url": "https://github.com/enajork/dotfiles-guide/blob/main/TILING.md#L1",
+              "role": "docs_reference",
+              "proofLevel": "partial"
+            }
+          ]
+        }
+      ],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "eval-exec/neomacs",
+      "score": 0,
+      "class": "unknown",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "no_dependency_proof",
+        "no_implementation_files"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "FancyWM/fancywm",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "grandyang/leetcode",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "halfrost/LeetCode-Go",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "jdpedersen1/Void-Herbstluftwm",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    },
+    {
+      "repo": "JohnnyFoulds/macos-window-grid",
+      "score": 0,
+      "class": "false_positive",
+      "positiveSignals": [],
+      "negativeSignals": [
+        {
+          "key": "docs_only",
+          "label": "Only documentation files matched — no implementation surface.",
+          "weight": -25,
+          "source": "metadata",
+          "confidence": 0.8
+        },
+        {
+          "key": "no_exact_evidence",
+          "label": "No exact file evidence was read for this repo.",
+          "weight": -30,
+          "source": "metadata",
+          "confidence": 0.8
+        }
+      ],
+      "missingProof": [
+        "dependency_proof: Dependency manifest proves the stack and libraries are actually used.",
+        "implementation_proof: Source files prove the feature is implemented, not just documented."
+      ],
+      "rejectionReasons": [
+        "docs_only",
+        "no_dependency_proof",
+        "no_implementation_files",
+        "ambiguous_feature"
+      ],
+      "nextAction": "reject"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_Alex-Bini_kwin-direktor_1",
+      "provider": "octocode",
+      "repo": "Alex-Bini/kwin-direktor",
+      "path": "README.md",
+      "startLine": 11,
+      "endLine": 11,
+      "matchText": "**An ultra-modern, zero-bloat, Wayland-First Tiling Window Manager for KDE Plasma 6.**",
+      "matchedSignal": "tiling",
+      "url": "https://github.com/Alex-Bini/kwin-direktor/blob/main/README.md#L11",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_antoniosarosi_dotfiles_1",
+      "provider": "octocode",
+      "repo": "antoniosarosi/dotfiles",
+      "path": "README.md",
+      "startLine": 68,
+      "endLine": 68,
+      "matchText": "\"tiling window manager\" videos on Youtube, because that's where the rabbit hole",
+      "matchedSignal": "tiling",
+      "url": "https://github.com/antoniosarosi/dotfiles/blob/main/README.md#L68",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_BuriedStPatrick_linux-notes_1",
+      "provider": "octocode",
+      "repo": "BuriedStPatrick/linux-notes",
+      "path": "rider.md",
+      "startLine": 5,
+      "endLine": 5,
+      "matchText": "### Window Tiling managers like bspwm, dwm, etc.",
+      "matchedSignal": "tiling",
+      "url": "https://github.com/BuriedStPatrick/linux-notes/blob/main/rider.md#L5",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_cdleon_awesome-terminals_1",
+      "provider": "octocode",
+      "repo": "cdleon/awesome-terminals",
+      "path": "README.md",
+      "startLine": 28,
+      "endLine": 28,
+      "matchText": "- [Darktile](https://github.com/liamg/darktile) - **[DEPRECATED]** A GPU rendered terminal emulator designed for tiling window managers.",
+      "matchedSignal": "tiling",
+      "url": "https://github.com/cdleon/awesome-terminals/blob/main/README.md#L28",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_davidshepherd7_frames-only-mode_1",
+      "provider": "octocode",
+      "repo": "davidshepherd7/frames-only-mode",
+      "path": "README.md",
+      "startLine": 9,
+      "endLine": 9,
+      "matchText": "[tiling window managers](https://en.wikipedia.org/wiki/Tiling_window_manager)",
+      "matchedSignal": "tiling",
+      "url": "https://github.com/davidshepherd7/frames-only-mode/blob/main/README.md#L9",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    },
+    {
+      "id": "ev_enajork_dotfiles-guide_1",
+      "provider": "octocode",
+      "repo": "enajork/dotfiles-guide",
+      "path": "TILING.md",
+      "startLine": 1,
+      "endLine": 1,
+      "matchText": "# Tiling window managers vs stacking window managers",
+      "matchedSignal": "tiling",
+      "url": "https://github.com/enajork/dotfiles-guide/blob/main/TILING.md#L1",
+      "role": "docs_reference",
+      "proofLevel": "partial"
+    }
+  ],
+  "warnings": [
+    "missingProof: eval-exec/neomacs was not proof-read (maxReposToProve reached).",
+    "missingProof: FancyWM/fancywm was not proof-read (maxReposToProve reached).",
+    "missingProof: grandyang/leetcode was not proof-read (maxReposToProve reached).",
+    "missingProof: halfrost/LeetCode-Go was not proof-read (maxReposToProve reached).",
+    "missingProof: jdpedersen1/Void-Herbstluftwm was not proof-read (maxReposToProve reached).",
+    "missingProof: JohnnyFoulds/macos-window-grid was not proof-read (maxReposToProve reached)."
+  ]
+}
