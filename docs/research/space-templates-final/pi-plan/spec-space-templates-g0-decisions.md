@@ -28,3 +28,8 @@ The remaining rollback residual is limited to the single-command `restore_hide` 
 ## Required spec interpretation
 
 Replace the reviewed spec's §7 pending-session lifecycle with a direct validate-then-apply lifecycle. Remove pending-session ownership, internal placeholder presentation, bind/commit/cancel session state, timeout handling, and listener cleanup from the v1 design. Update acceptance/tests and public Lua/API descriptions to cover complete atomic apply, missing-slot errors, `restore_hide` sweep rollback, and zero mutation on validation failure.
+
+> **Addendum (post-recording):** D-02 was tightened after this artifact was
+> written — the retry loop is plain userland scripting (apply → fill the named
+> slots → apply again); callbacks are optional, and the apply API carries **no
+> fallback/retry/staging parameters** (anti-feature guard, plan.md D-02).

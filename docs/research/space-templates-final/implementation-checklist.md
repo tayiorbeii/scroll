@@ -1,46 +1,54 @@
-# Implementation checklist — bindable space templates (scroll #384)
+# Implementation checklist — bindable space templates (v2.1)
 
-Phase order per [plan.md](plan.md). "Verified" = built + manual/automated check
-run in this clone.
+Tracks [plan.md](plan.md) v2.1 (G0 resolved: H-01 restore_hide sweep; H-02/D-06
+no compositor placeholders, single-shot atomic apply; fill-then-retry is
+userland scripting). "Verified" = built + check run in this clone.
 
-## Phase 1 — Data model
-- [ ] `sway_space_container.slot` + `hint{app_id,class,title}` fields added (`include/sway/tree/space.h:13-32`)
-- [ ] accessors + destroy paths updated (`sway/tree/space.c`)
-- [ ] `space_template` object (or flagged `sway_space`) created; unbound leaves supported
-- [ ] meson.build lists new `sway/tree/space_template.c`
-- [ ] Verified: fixture JSON → template tree round-trips slots/fractions
+## G0 — decisions ✅ RESOLVED 2026-09-17
+- [x] H-01: restore_hide sweep at apply; CLOSE stays out; sweep undone on post-sweep failure
+- [x] H-02/D-06: no compositor placeholders, no pending/timeout/cancel machinery
+- [x] D-02: apply error names missing slots; fill-then-retry is userland scripting
+- [x] Recorded in run `20260917162037-gd9n1c` (`pi-plan/spec-space-templates-g0-decisions.md`)
 
-## Phase 2 — JSON serialization
-- [ ] `ipc_json_describe_space_template()` emits `version`/`name`/tiling/floating/slot/size fractions/view_hint/focused_slot
-- [ ] geometry fields added to live `get_spaces` JSON too (fixes current omission at `sway/ipc-json.c:1592-1627`)
-- [ ] `space_template_load_json()` parser (json-c): rejects empty slots, tolerates unknown keys, validates fractions
-- [ ] Verified: round-trip identity; malformed-input rejection with precise error
+## G1 — plain-data template model
+- [ ] `include/sway/tree/space_template.h` + `sway/tree/space_template.c`: versioned template object (name, scroller modifiers, tiling/floating trees, slot IDs, optional hints, focused slot)
+- [ ] No view pointers/listeners anywhere in durable state; partial-tree-safe ctors/dtors; deep copy
+- [ ] `sway/meson.build` registers new sources; legacy `sway_space` untouched
+- [ ] Verified: fixture tree round-trips; ASan/LSan-clean create/destroy
 
-## Phase 3 — IPC + commands
-- [ ] `IPC_GET_SPACE_TEMPLATE` / `IPC_LOAD_SPACE_TEMPLATE` wired: `swaymsg/main.c` dispatch (near :983), `sway/ipc-server.c` handler, `include/sway/ipc-server.h` codes
-- [ ] `space_template save|load|bind|commit|cancel` commands in `sway/commands/`
-- [ ] completions updated (`completions/`)
-- [ ] man pages: `scroll-ipc.7.scd`, `scroll.5.scd`
-- [ ] Verified: `scrollmsg -t get_space_template work` on live session
+## G2 — JSON + persistence
+- [ ] `space_template_json.c` exporter/importer per plan §4 (enums, fractions, hints, focused_slot)
+- [ ] JSON-path errors; unknown keys tolerated; version rejected; depth/node/regex limits; PCRE2 compiled at validation
+- [ ] `$XDG_CONFIG_HOME/scroll/templates/<name>.json`: safe names, atomic temp+rename, lazy load + cache refresh, corrupt-file isolation
+- [ ] Verified: semantic round-trip identity; malformed fixtures rejected with stable paths; save failure leaves prior file intact
 
-## Phase 4 — Binding engine
-- [ ] placeholder rendering decided (empty container vs titled visual); Overview/Jump interplay handled
-- [ ] `space_template bind <slot>` reuses `criteria_matches_view()` for hints (`include/sway/criteria.h:75-76`)
-- [ ] pending→commit/cancel lifecycle; unbound-slot timeout configurable
-- [ ] documented precedence: slot binding > for_window assign (i3 parity, `i3/docs/layout-saving:41-44`)
-- [ ] Verified: out-of-order app launch + binds; fractions/focus correct after commit; cancel restores prior state
+## G3 — atomic apply engine
+- [ ] Validate-mappings-first: every slot → exactly one mapped live view, else fail with **zero mutation**
+- [ ] Error enumerates missing/ambiguous slots (the only incompleteness interface — D-02)
+- [ ] Scratchpad sweep of unrelated target-workspace views (`restore_hide` parity); sweep undone if arrange fails
+- [ ] Arrange bound views per template (fractions/scroller/floating/focus `focused_slot`); dissolve all template state after
+- [ ] No empty leaf containers at any point; second apply serialized
+- [ ] Verified: incomplete mapping mutates nothing; out-of-order staging irrelevant; sweep/rollback exact
 
-## Phase 5 — Lua API + example
-- [ ] `space_template_get/load/bind/commit/cancel` registered in `sway/lua.c:1984` registry
-- [ ] example binder script (view_mapped + hints + exec_process + retry + commit) shipped and tested via `scrollmsg --lua_repl`
-- [ ] Verified: example restores a 3-slot template from cold start
+## G4 — commands + IPC
+- [ ] `space_template save|apply` commands; `apply_space_template` IPC (`{name, workspace:"current", mappings:[…]}`) — **no fallback/retry/staging fields (anti-feature guard, D-02)**
+- [ ] Wired through `include/ipc.h`, `sway/ipc-server.c`, `swaymsg/main.c`; legacy `get_spaces` unchanged
+- [ ] Completions (bash/fish/zsh) + man pages (`scroll-ipc.7.scd`, `scroll.5.scd`)
+- [ ] Verified: live `scrollmsg -t get_space_template` round-trip; deterministic error objects
 
-## Phase 6 — Docs + upstream
-- [ ] TUTORIAL.md section; 2 example templates
-- [ ] discussion #384 reply drafted (answers its two open questions with evidence from research.md)
-- [ ] phased local commits; NO PR without explicit approval
+## G5 — Lua adapter + examples
+- [ ] `space_template_get(name)`, `space_template_apply(name, mappings)` → `(nil, error)` naming missing slots; **no fallback/retry helpers in the binding (anti-feature guard)**
+- [ ] Example (a) canonical fill-then-retry script (plain loop, no callbacks required)
+- [ ] Example (b) launcher placeholders: stage launcher terminals → apply → swap for real apps on selection
+- [ ] Verified: cold-start three-slot restore via `scrollmsg --lua_repl`; no callback/state leaks
 
-## Cross-cutting
-- [ ] `git diff --check` clean; meson build green each phase
-- [ ] no state files written outside `$XDG_CONFIG_HOME/scroll/templates/`
-- [ ] crash safety: templates are plain data; no view pointers serialized
+## G6 — hardening + docs
+- [ ] TUTORIAL/man updates: template anatomy, apply contract, restore_hide sweep, userland fallback/placeholder patterns, current-workspace limitation
+- [ ] Two example templates (dev mail+terminal+editor per #384; writing)
+- [ ] Discussion #384 reply (dedicated API — D-01; all-slots-required with userland fallback — D-02/D-06)
+- [ ] Full repo checks (Meson build+tests, `git diff --check`, completions, man generation); review-ready local commits; **no PR/merge without explicit authorization**
+
+## Cross-cutting invariants
+- [ ] Anti-feature: no fallback/retry/staging parameters anywhere in compositor, IPC, or binding (D-02)
+- [ ] No state files outside `<config>/scroll/templates/`; no generated runtime state committed
+- [ ] Crash safety: templates are plain data; apply is the only mutating operation

@@ -1,3 +1,9 @@
+> ⚠️ **HISTORICAL — superseded by [../plan.md](../plan.md) v2.1 (2026-09-17).**
+> G0 was resolved by the policy owner: restore_hide sweep (H-01), no
+> compositor placeholders, single-shot atomic apply — **the pending-session,
+> bind/commit/cancel, and timeout machinery below was dropped** (D-06).
+> Kept verbatim as the attested review record; do not implement from this file.
+
 # Execution graph: bindable space templates (#384)
 
 ## Graph metadata

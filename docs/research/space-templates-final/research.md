@@ -141,3 +141,23 @@ Full implementation plan: see [plan.md](plan.md). Checklist:
 [implementation-checklist.md](implementation-checklist.md). Raw evidence:
 [evidence.json](evidence.json). Automated kit run attempts are preserved in
 `../space-templates/`, `../space-templates-run2/`, `../space-templates-run3/`.
+
+## Addendum (2026-09-17): design-lesson outcomes
+
+G0 was resolved by the policy owner after this research was written; where the
+lessons above proposed options, the outcomes are:
+
+- Lesson 3 (all-or-nothing binding): adopted, and strengthened — **apply fails
+  unless every slot is mapped; there is no pending state, timeout, or commit
+  step at all** (plan.md D-02/D-06). The "timed or explicit-commit" option was
+  rejected.
+- Lesson 4 (matching policy in user scripts): adopted; per-slot fallbacks
+  (launch a default program / raise an existing window) are also userland.
+- Lesson 5 (dedicated template IPC): adopted (D-01); the API is single-shot —
+  no fallback/retry/staging parameters (anti-feature guard).
+- Lesson 6 (precedence): subsumed — since apply only accepts explicit
+  mappings for *all* slots and sweeps the rest, there is no concurrent-match
+  ambiguity to arbitrate.
+
+Authoritative decisions: [plan.md §3](plan.md). Historical reviewed artifacts
+under [pi-plan/](pi-plan/) carry superseded banners where machinery changed.
